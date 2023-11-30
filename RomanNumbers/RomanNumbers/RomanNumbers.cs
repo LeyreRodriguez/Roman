@@ -12,9 +12,18 @@ namespace RomanNumbers
             {
                 return "Invalid number";
             }
+            StringBuilder sb = new StringBuilder();
+            foreach (var pair in romanNumbers.OrderByDescending(x => x.Value))
+            {
+                
+                while (amount >= pair.Value)
+                {
+                    sb.Append(pair.Key);
+                    amount -= pair.Value;
+                }
+            }
 
-
-            return amount.ToString();
+            return sb.ToString();
         }
     }
 }

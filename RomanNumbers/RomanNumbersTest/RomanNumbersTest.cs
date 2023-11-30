@@ -22,5 +22,29 @@ namespace RomanNumbersTest
             var result = converter.Convert(number);
             result.Should().Be("Invalid number");
         }
+
+        [Test]
+        public void Should_Return_I_When_1_Is_Passed()
+        {
+            var result = converter.Convert(1);
+            result.Should().Be("I");
+        }
+
+        [Test]
+        public void Should_Return_II_When_2_Is_Passed()
+        {
+            var result = converter.Convert(2);
+            result.Should().Be("II");
+        }
+
+
+
+        [Test]
+        public void Should_Return_X_When_10Is_Passed()
+        {
+            var result = converter.Convert(10);
+            result.Should().Be("X");
+        }
+
     }
 }
