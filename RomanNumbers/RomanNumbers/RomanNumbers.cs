@@ -5,25 +5,36 @@ namespace RomanNumbers
     public class RomanNumbers
     {
 
-        private IDictionary<char, int> romanNumbers = new Dictionary<char, int>() { {'I', 1} , {'V', 5 }, {'X' , 10} , {'L', 50}, {'C', 100}, {'D', 500} , {'M', 1000} };
-        public string Convert(int amount)
+        private readonly SortedDictionary<int, string> _romanNumeralsLookup = new SortedDictionary<int, string>
         {
-            if (amount <= 0 || amount >= 4000)
-            {
-                return "Invalid number";
-            }
-            StringBuilder sb = new StringBuilder();
-            foreach (var pair in romanNumbers.OrderByDescending(x => x.Value))
-            {
-                
-                while (amount >= pair.Value)
-                {
-                    sb.Append(pair.Key);
-                    amount -= pair.Value;
-                }
-            }
+            {1000, "M"},
+            {900, "CM"},
+            {500, "D"},
+            {400, "CD"},
+            {100, "C"},
+            {90, "XC"},
+            {40, "XL"},
+            {50, "L"},
+            {10, "X"},
+            {9, "IX"},
+            {5, "V"},
+            {4, "IV"},
+            {1, "I"},
+        };
 
-            return sb.ToString();
-        }
+        public string Convert(int amount) =>
+            (amount <= 0 || amount >= 4000) ? "Invalid number" :
+                _romanNumeralsLookup.Keys.Reverse()
+                    .Aggregate("", (result, number) =>
+                    {
+                        while (amount >= number)
+                        {
+                            result += _romanNumeralsLookup[number];
+                            amount -= number;
+                        }
+
+                        return result;
+                    });
+
     }
 }

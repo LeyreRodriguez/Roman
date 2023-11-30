@@ -49,16 +49,16 @@ namespace RomanNumbersTest
         [Test]
         public void Should_Return_IX_When_9_Is_Passed()
         {
-            var result = converter.Convert(10);
-            result.Should().Be("X");
+            var result = converter.Convert(9);
+            result.Should().Be("IX");
         }
 
 
         [Test]
         public void Should_Return_IV_When_4_Is_Passed()
         {
-            var result = converter.Convert(10);
-            result.Should().Be("X");
+            var result = converter.Convert(4);
+            result.Should().Be("IV");
         }
 
 
