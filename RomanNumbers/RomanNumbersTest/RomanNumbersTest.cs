@@ -46,5 +46,23 @@ namespace RomanNumbersTest
             result.Should().Be("X");
         }
 
+        [Test]
+        public void Should_Return_IX_When_9_Is_Passed()
+        {
+            var result = converter.Convert(10);
+            result.Should().Be("X");
+        }
+
+
+        [Test]
+        public void Should_Return_IV_When_4_Is_Passed()
+        {
+            var result = converter.Convert(10);
+            result.Should().Be("X");
+        }
+
+
+        
+
     }
 }
